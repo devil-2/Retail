@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDataManager", "RDataManager\RDataManager.csproj", "{ACA9D959-46A8-4091-860A-042547224D6B}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RetailData", "RetailData\RetailData.sqlproj", "{F471753A-0B8D-479F-9474-496F54680D4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailWPFUI", "RetailWPFUI\RetailWPFUI.csproj", "{CB3EED80-4CB9-452C-B2EF-C29E8A14B394}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,16 @@ Global
 		{ACA9D959-46A8-4091-860A-042547224D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACA9D959-46A8-4091-860A-042547224D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACA9D959-46A8-4091-860A-042547224D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F471753A-0B8D-479F-9474-496F54680D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F471753A-0B8D-479F-9474-496F54680D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F471753A-0B8D-479F-9474-496F54680D4C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F471753A-0B8D-479F-9474-496F54680D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F471753A-0B8D-479F-9474-496F54680D4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F471753A-0B8D-479F-9474-496F54680D4C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CB3EED80-4CB9-452C-B2EF-C29E8A14B394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB3EED80-4CB9-452C-B2EF-C29E8A14B394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB3EED80-4CB9-452C-B2EF-C29E8A14B394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB3EED80-4CB9-452C-B2EF-C29E8A14B394}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

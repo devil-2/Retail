@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailWPFUI", "RetailWPFUI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomControl\CustomControl.csproj", "{84F7FE10-E0C6-4BE7-BD60-C6476C09E86E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailDataManager.Library", "RetailDataManager.Library\RetailDataManager.Library.csproj", "{37E14737-356F-4402-A0DE-5FE1C58E647E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{84F7FE10-E0C6-4BE7-BD60-C6476C09E86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84F7FE10-E0C6-4BE7-BD60-C6476C09E86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84F7FE10-E0C6-4BE7-BD60-C6476C09E86E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37E14737-356F-4402-A0DE-5FE1C58E647E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E14737-356F-4402-A0DE-5FE1C58E647E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E14737-356F-4402-A0DE-5FE1C58E647E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E14737-356F-4402-A0DE-5FE1C58E647E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

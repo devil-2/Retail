@@ -10,11 +10,11 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
-                            <Grid.RowDefinitions>
+                            <!--<Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <TextBox x:FieldModifier="Part_TextBox" AutoWordSelection="True"/>
+                            </Grid.RowDefinitions>-->
+                            <!--<TextBox x:FieldModifier="Part_TextBox" AutoWordSelection="True"/>-->
                         </Grid>
                     </Border>
                 </ControlTemplate>

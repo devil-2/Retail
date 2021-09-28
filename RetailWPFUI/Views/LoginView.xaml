@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="RetailWPFUI.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RetailWPFUI.Views"
+             mc:Ignorable="d"  FontSize="24"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" 
+                   Grid.ColumnSpan="2" FontFamily="Segoe UI Light"
+                   HorizontalAlignment="Center" FontSize="64" Margin="0 0 0 20"> 
+            Login Form
+        </TextBlock>
+        <!--Error Message-->
+        <TextBlock x:Name="ErrorMessage" Text="This is an Error Message" Grid.Row="1" Grid.Column="1" 
+                   Grid.ColumnSpan="2" FontFamily="Segoe UI Light" MaxWidth="300"
+                   TextWrapping="Wrap" Visibility="{Binding IsErrorVisible, Converter= {StaticResource BooleanToVisibleConverter}}"
+                   HorizontalAlignment="Center" Margin="0 0 0 20" Foreground="Red"/>
+
+
+        <!-- User Name Row -->
+        <TextBlock Grid.Row="2" Grid.Column="1" Margin="0 0 0 10">Username:</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="2" x:Name="UserName" MinWidth="150" Margin="0 0 0 10"/>
+
+        <!-- Password Row -->
+        <TextBlock Grid.Row="3" Grid.Column="1" Margin="0 0 0 10">Password:</TextBlock>
+        <PasswordBox Grid.Row="3" Grid.Column="2" x:Name="Password" MinWidth="150" Margin="0 0 0 10"/>
+
+        <!--Button Row-->
+        <Button x:Name="LogIn" Grid.Row="4" HorizontalAlignment="Center" Padding="20 5"
+                Grid.Column="1" Grid.ColumnSpan="2" Margin="0 20 0 0">Log In</Button>
+        
+    </Grid>
+</UserControl>

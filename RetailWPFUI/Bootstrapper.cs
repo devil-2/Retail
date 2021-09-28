@@ -1,9 +1,11 @@
 ﻿using Caliburn.Micro;
+using RetailWPFUI.Helpers;
 using RetailWPFUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace RetailWPFUI
 {
@@ -14,6 +16,10 @@ namespace RetailWPFUI
         public Bootstrapper()
         {
             Initialize();
+            ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged");
         }
 
         protected override void Configure()
@@ -22,7 +28,8 @@ namespace RetailWPFUI
 
             _container
                 .Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IApiHelper, ApiHelper>();
 
             RegisterCommonTypes("ViewModel");
         }

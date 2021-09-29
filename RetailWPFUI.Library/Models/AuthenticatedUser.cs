@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RetailWPFUI.Models
+namespace RetailWPFUI.Library.Models
 {
     public class AuthenticatedUser
     {

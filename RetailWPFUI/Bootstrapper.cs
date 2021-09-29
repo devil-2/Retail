@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using RetailWPFUI.Helpers;
+using RetailWPFUI.Library.Api;
+using RetailWPFUI.Library.Models;
 using RetailWPFUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,7 @@ namespace RetailWPFUI
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>()
                 .Singleton<IApiHelper, ApiHelper>();
 
             RegisterCommonTypes("ViewModel");

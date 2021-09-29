@@ -331,6 +331,12 @@
       <DependentUpon>202109240547227_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RetailDataManager.Library\RetailDataManager.Library.csproj">
+      <Project>{37E14737-356F-4402-A0DE-5FE1C58E647E}</Project>
+      <Name>RetailDataManager.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

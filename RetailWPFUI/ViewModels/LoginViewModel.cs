@@ -1,9 +1,6 @@
 ﻿using Caliburn.Micro;
-using RetailWPFUI.Helpers;
+using RetailWPFUI.Library.Api;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RetailWPFUI.ViewModels
@@ -25,19 +22,17 @@ namespace RetailWPFUI.ViewModels
             }
         }
 
-
         public bool IsErrorVisible
         {
             get { return ErrorMessage?.Length>0; }
-           
         }
 
-        private IApiHelper _apiHelper;
+        private readonly IApiHelper _apiHelper;
 
         public string UserName
         {
             get { return _userName; }
-            set 
+            set
             { 
                 _userName = value;
                 NotifyOfPropertyChange(() => UserName);
@@ -75,7 +70,6 @@ namespace RetailWPFUI.ViewModels
             }
             catch (Exception ex)
             {
-
                 ErrorMessage = ex.Message;
             }
         }

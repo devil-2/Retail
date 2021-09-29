@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using RetailWPFUI.EventModels;
 using RetailWPFUI.Library.Api;
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace RetailWPFUI.ViewModels
         private string _userName;
         private string _password;
         private string _errorMessage;
+        private readonly IAuthApi _apiHelper;
+        private readonly IEventAggregator _events;
 
         public string ErrorMessage
         {
@@ -26,8 +29,6 @@ namespace RetailWPFUI.ViewModels
         {
             get { return ErrorMessage?.Length>0; }
         }
-
-        private readonly IApiHelper _apiHelper;
 
         public string UserName
         {
@@ -56,9 +57,10 @@ namespace RetailWPFUI.ViewModels
             get { return UserName?.Length > 0 && Password?.Length > 0; }
         }
 
-        public LoginViewModel(IApiHelper apiHelper)
+        public LoginViewModel(IAuthApi apiHelper,IEventAggregator events)
         {
             _apiHelper = apiHelper;
+            _events = events;
         }
 
         public async Task LogIn()
@@ -67,6 +69,7 @@ namespace RetailWPFUI.ViewModels
             try
             {
                 await _apiHelper.Authenticate(UserName, Password);
+                await _events.PublishOnUIThreadAsync(new LogOnEvent());
             }
             catch (Exception ex)
             {

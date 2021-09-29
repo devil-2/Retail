@@ -2,7 +2,7 @@
 
 namespace RetailWPFUI.Library.Api
 {
-    public interface IApiHelper
+    public interface IAuthApi
     {
         Task Authenticate(string userName, string password);
     }

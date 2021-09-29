@@ -32,8 +32,10 @@ namespace RetailWPFUI
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>()
-                .Singleton<IApiHelper, ApiHelper>();
+                .Singleton<ApiHelper>();
 
+            _container.PerRequest<IAuthApi, AuthApi>()
+                .PerRequest<IProductApi, ProductApi>();
             RegisterCommonTypes("ViewModel");
         }
 

@@ -1,9 +1,6 @@
 ﻿using RetailDataManager.Library.Internal.DataAccess;
 using RetailDataManager.Library.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RetailDataManager.Library.DataAccess

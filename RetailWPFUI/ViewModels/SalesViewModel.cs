@@ -1,25 +1,26 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
 using RetailWPFUI.Library.Api;
 using RetailWPFUI.Library.Models;
-using System;
+using RetailWPFUI.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RetailWPFUI.ViewModels
 {
     public class SalesViewModel : Screen
     {
-        private BindingList<ProductModel> _products;
-        private BindingList<CartItemModel> _carts = new BindingList<CartItemModel>();
+        private BindingList<ProductDisplayModel> _products;
+        private BindingList<CartItemDisplayModel> _carts = new BindingList<CartItemDisplayModel>();
         private int _itemQuantity = 1;
         private readonly IProductApi _productApi;
         private readonly ISaleApi _saleApi;
-        private ProductModel _selectedProduct;
+        private readonly IMapper _mapper;
+        private ProductDisplayModel _selectedProduct;
 
-        public ProductModel SelectedProduct
+        public ProductDisplayModel SelectedProduct
         {
             get { return _selectedProduct; }
             set
@@ -30,10 +31,11 @@ namespace RetailWPFUI.ViewModels
             }
         }
 
-        public SalesViewModel(IProductApi productApi, ISaleApi saleApi)
+        public SalesViewModel(IProductApi productApi, ISaleApi saleApi, IMapper mapper)
         {
             _productApi = productApi;
             _saleApi = saleApi;
+            _mapper = mapper;
         }
 
         protected override async void OnViewLoaded(object view)
@@ -45,10 +47,11 @@ namespace RetailWPFUI.ViewModels
         private async Task LoadProducts()
         {
             var data = await _productApi.GetAll();
-            Products = new BindingList<ProductModel>(data);
+            var productlist = _mapper.Map<List<ProductDisplayModel>>(data);
+            Products = new BindingList<ProductDisplayModel>(productlist);
         }
 
-        public BindingList<ProductModel> Products
+        public BindingList<ProductDisplayModel> Products
         {
             get { return _products; }
             set 
@@ -58,7 +61,7 @@ namespace RetailWPFUI.ViewModels
             }
         }
   
-        public BindingList<CartItemModel> Cart
+        public BindingList<CartItemDisplayModel> Cart
         {
             get { return _carts; }
             set
@@ -118,21 +121,20 @@ namespace RetailWPFUI.ViewModels
         }
         public void AddToCart() 
         {
-            CartItemModel cartItem = Cart.FirstOrDefault(x => x.Product.Id == SelectedProduct.Id);
+            CartItemDisplayModel cartItem = Cart.FirstOrDefault(x => x.Product.Id == SelectedProduct.Id);
             if (cartItem != null) {
                 cartItem.QuantityInCart += ItemQuantity;
-                Cart.Remove(cartItem);
             }
             else
             {
-                cartItem = new CartItemModel
+                cartItem = new CartItemDisplayModel
                 {
                     Product = SelectedProduct,
                     QuantityInCart = ItemQuantity
                 };
-               
+                Cart.Add(cartItem);
             }
-            Cart.Add(cartItem);
+            
             SelectedProduct.QuantityInStock -= ItemQuantity;
             ItemQuantity = 1;
             NotifyOfPropertyChange(() => SubTotal);

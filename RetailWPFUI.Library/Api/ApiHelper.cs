@@ -13,8 +13,8 @@ namespace RetailWPFUI.Library.Api
         public HttpClient ApiClient { get{return _apiClient; } }
         public ApiHelper(IConfigHelper configHelper)
         {
-            InitializeClient();
             _configHelper = configHelper;
+            InitializeClient();
         }
 
         private void InitializeClient()

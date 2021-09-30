@@ -1,8 +1,10 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
 using RetailWPFUI.Helpers;
 using RetailWPFUI.Library.Api;
 using RetailWPFUI.Library.Helpers;
 using RetailWPFUI.Library.Models;
+using RetailWPFUI.Models;
 using RetailWPFUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,7 @@ namespace RetailWPFUI
 
         protected override void Configure()
         {
+            ConfigureAutoMapper();
             _container.Instance(_container);
 
             _container
@@ -42,6 +45,17 @@ namespace RetailWPFUI
 
 
             RegisterCommonTypes("ViewModel");
+        }
+
+        private  void ConfigureAutoMapper()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ProductModel, ProductDisplayModel>();
+                cfg.CreateMap<CartItemModel, CartItemDisplayModel>();
+            });
+            var mapper = config.CreateMapper();
+            _container.Instance(mapper);
         }
 
         private void RegisterCommonTypes(string type)

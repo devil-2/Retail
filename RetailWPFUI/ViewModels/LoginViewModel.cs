@@ -8,8 +8,8 @@ namespace RetailWPFUI.ViewModels
 {
     public class LoginViewModel : Screen
     {
-        private string _userName;
-        private string _password;
+        private string _userName="vm2508.cs@gmail.com";
+        private string _password="Vikas@123";
         private string _errorMessage;
         private readonly IAuthApi _apiHelper;
         private readonly IEventAggregator _events;

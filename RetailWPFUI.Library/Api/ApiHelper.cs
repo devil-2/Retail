@@ -1,5 +1,5 @@
-﻿using System;
-using System.Configuration;
+﻿using RetailWPFUI.Library.Helpers;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -8,19 +8,20 @@ namespace RetailWPFUI.Library.Api
     public class ApiHelper
     {
         private HttpClient _apiClient;
+        private readonly IConfigHelper _configHelper;
 
         public HttpClient ApiClient { get{return _apiClient; } }
-        public ApiHelper()
+        public ApiHelper(IConfigHelper configHelper)
         {
             InitializeClient();
+            _configHelper = configHelper;
         }
 
         private void InitializeClient()
         {
-            var baseAddress = ConfigurationManager.AppSettings["api"];
             _apiClient = new HttpClient
             {
-                BaseAddress = new Uri(baseAddress)
+                BaseAddress = new Uri(_configHelper.GetBaseAddress())
             };
             _apiClient.DefaultRequestHeaders.Accept.Clear();
             _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -28,4 +29,4 @@ namespace RetailWPFUI.Library.Api
         }
     }
 
-  }
+}

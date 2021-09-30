@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using RetailWPFUI.Helpers;
 using RetailWPFUI.Library.Api;
+using RetailWPFUI.Library.Helpers;
 using RetailWPFUI.Library.Models;
 using RetailWPFUI.ViewModels;
 using System;
@@ -32,6 +33,7 @@ namespace RetailWPFUI
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>()
+                .Singleton<IConfigHelper, ConfigHelper>()
                 .Singleton<ApiHelper>();
 
             _container.PerRequest<IAuthApi, AuthApi>()

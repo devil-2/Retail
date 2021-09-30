@@ -74,4 +74,22 @@ namespace RetailWPFUI.Library.Api
         }
     }
 
+    public class SaleApi : ISaleApi
+    {
+        private readonly ApiHelper _apiHelper;
+
+        public SaleApi(ApiHelper apiHelper)
+        {
+            _apiHelper = apiHelper;
+        }
+
+        public async Task Post(SaleModel model)
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/Sale", model))
+            {
+                if (!response.IsSuccessStatusCode) throw new Exception(response.ReasonPhrase);
+            }
+        }
+    }
+
 }

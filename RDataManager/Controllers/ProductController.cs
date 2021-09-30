@@ -8,13 +8,13 @@ namespace RDataManager.Controllers
 {
     [Authorize]
     public class ProductController : ApiController
-    {
-      
+    { 
         [HttpGet]
         public async Task<List<ProductModel>> Get()
         {
             ProductData data = new ProductData();
             return await data.LoadProduct();
         }
+     
     }
 }

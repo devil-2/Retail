@@ -16,6 +16,7 @@ namespace RetailWPFUI.ViewModels
         private BindingList<CartItemModel> _carts = new BindingList<CartItemModel>();
         private int _itemQuantity = 1;
         private readonly IProductApi _productApi;
+        private readonly ISaleApi _saleApi;
         private ProductModel _selectedProduct;
 
         public ProductModel SelectedProduct
@@ -29,9 +30,10 @@ namespace RetailWPFUI.ViewModels
             }
         }
 
-        public SalesViewModel(IProductApi productApi)
+        public SalesViewModel(IProductApi productApi, ISaleApi saleApi)
         {
             _productApi = productApi;
+            _saleApi = saleApi;
         }
 
         protected override async void OnViewLoaded(object view)
@@ -87,13 +89,7 @@ namespace RetailWPFUI.ViewModels
 
         private decimal CalculateSubTotal()
         {
-            decimal subtotal = 0;
-            foreach (CartItemModel item in Cart)
-            {
-                subtotal += item.Product.RetailPrice * item.QuantityInCart;
-            }
-
-            return subtotal;
+            return Cart.Sum(item => item.Price);
         }
       
         public string Tax
@@ -105,13 +101,7 @@ namespace RetailWPFUI.ViewModels
         }
         private decimal CalculateTax()
         {
-            decimal tax = 0;
-            foreach (CartItemModel item in Cart)
-            {
-                tax += item.QuantityInCart * item.Product.RetailPrice * item.Product.Tax / 100;
-            }
-
-            return tax;
+            return Cart.Sum(item => item.Tax);
         }
         public string Total
         {
@@ -148,6 +138,7 @@ namespace RetailWPFUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanRemoveFromCart
@@ -159,15 +150,18 @@ namespace RetailWPFUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanCheckOut
         {
             get { return Cart.Any(); }
         }
-        public void CheckOut()
+        public async Task CheckOut()
         {
-
+            List<SaleDetail> saleItems = Cart.Select(x => new SaleDetail { ProductId = x.Product.Id, ProductQuantity = x.QuantityInCart }).ToList();
+            SaleModel saleModel = new SaleModel { SaleDetails = saleItems };
+            await  _saleApi.Post(saleModel);
         }
 
 

@@ -37,7 +37,10 @@ namespace RetailWPFUI
                 .Singleton<ApiHelper>();
 
             _container.PerRequest<IAuthApi, AuthApi>()
-                .PerRequest<IProductApi, ProductApi>();
+                .PerRequest<IProductApi, ProductApi>()
+                .PerRequest<ISaleApi, SaleApi>();
+
+
             RegisterCommonTypes("ViewModel");
         }
 
